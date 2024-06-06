@@ -1,4 +1,4 @@
-package com.example.deeplink
+package com.awas.sokoon
 
 import io.flutter.embedding.android.FlutterActivity
 
