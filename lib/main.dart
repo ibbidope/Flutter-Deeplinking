@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:deeplink/details.dart';
 import 'package:deeplink/home.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,17 +12,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final GoRouter router = GoRouter(
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => const HomeScreen(),
+        ),
+        GoRoute(
+          path: '/details',
+          builder: (context, state) => const DetailsScreen(),
+        ),
+      ],
+    );
+
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomeScreen(),
-        '/details': (context) => const DetailsScreen(),
-      },
+      routerConfig: router,
     );
   }
 }
